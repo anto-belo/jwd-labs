@@ -5,6 +5,7 @@ public class Point extends Figure {
     private final int y;
 
     public Point(int x, int y) {
+        figureType = FigureType.POINT;
         this.x = x;
         this.y = y;
     }

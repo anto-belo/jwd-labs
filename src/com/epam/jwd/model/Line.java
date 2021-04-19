@@ -1,19 +1,18 @@
 package com.epam.jwd.model;
 
+import com.epam.jwd.strategy.LinePropertiesStrategy;
+
 import java.util.Objects;
 
 public class Line extends Figure {
     private final Point start;
     private final Point end;
 
-    public Line(Point start, Point end) {
+    Line(Point start, Point end) {
+        figureType = FigureType.LINE;
+        figureProperties = LinePropertiesStrategy.getInstance();
         this.start = start;
         this.end = end;
-    }
-
-    public Line(int x1, int y1, int x2, int y2) {
-        start = new Point(x1, y1);
-        end = new Point(x2, y2);
     }
 
     public Point getStart() {
@@ -45,7 +44,9 @@ public class Line extends Figure {
     @Override
     public String toString() {
         return "Line{" +
-                "start=" + start +
+                "figureType=" + figureType +
+                ", figureProperties=" + figureProperties +
+                ", start=" + start +
                 ", end=" + end +
                 '}';
     }

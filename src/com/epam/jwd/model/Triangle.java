@@ -1,5 +1,7 @@
 package com.epam.jwd.model;
 
+import com.epam.jwd.strategy.TrianglePropertiesStrategy;
+
 import java.util.Objects;
 
 public class Triangle extends Figure {
@@ -7,16 +9,12 @@ public class Triangle extends Figure {
     private final Point b;
     private final Point c;
 
-    public Triangle(Point a, Point b, Point c) {
+    Triangle(Point a, Point b, Point c) {
+        figureType = FigureType.TRIANGLE;
+        figureProperties = TrianglePropertiesStrategy.INSTANCE;
         this.a = a;
         this.b = b;
         this.c = c;
-    }
-
-    public Triangle(int x1, int y1, int x2, int y2, int x3, int y3) {
-        a = new Point(x1, y1);
-        b = new Point(x2, y2);
-        c = new Point(x3, y3);
     }
 
     public Point getA() {
@@ -54,7 +52,9 @@ public class Triangle extends Figure {
     @Override
     public String toString() {
         return "Triangle{" +
-                "a=" + a +
+                "figureType=" + figureType +
+                ", figureProperties=" + figureProperties +
+                ", a=" + a +
                 ", b=" + b +
                 ", c=" + c +
                 '}';

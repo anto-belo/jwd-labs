@@ -1,5 +1,7 @@
 package com.epam.jwd.model;
 
+import com.epam.jwd.strategy.SquarePropertiesStrategy;
+
 import java.util.Objects;
 
 public class Square extends Figure {
@@ -8,18 +10,13 @@ public class Square extends Figure {
     private final Point c;
     private final Point d;
 
-    public Square(Point a, Point b, Point c, Point d) {
+    Square(Point a, Point b, Point c, Point d) {
+        figureType = FigureType.SQUARE;
+        figureProperties = SquarePropertiesStrategy.INSTANCE;
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
-    }
-
-    public Square(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
-        a = new Point(x1, y1);
-        b = new Point(x2, y2);
-        c = new Point(x3, y3);
-        d = new Point(x4, y4);
     }
 
     public Point getA() {
@@ -63,7 +60,9 @@ public class Square extends Figure {
     @Override
     public String toString() {
         return "Square{" +
-                "a=" + a +
+                "figureType=" + figureType +
+                ", figureProperties=" + figureProperties +
+                ", a=" + a +
                 ", b=" + b +
                 ", c=" + c +
                 ", d=" + d +
